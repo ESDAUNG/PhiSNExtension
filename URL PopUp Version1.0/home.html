@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Browser Extension: Predicting PHISHING URL</title>
+    <style>
+        .body {
+            /*margin: 0 33%;*/
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            min-width: 550px;
+            font-size: 18px;
+            background-color: #d2def1;
+        }
+
+        #logo {
+            width: 25%;
+            margin: 0 38%;
+            /*background-color: #4285f4;*/
+            background-image: linear-gradient(#d2def1, #4a81db, #104496);
+            /*height: 50vh;*/
+            border: 2px solid;
+            border-color: #104496;
+            border-radius: 4px;
+            /*margin: 0 25%;*/
+            filter: drop-shadow(5px 5px 4px #4a81db);
+        }
+
+        .input-div {
+            width: 100%;
+            /*background-color: #1fe015;*/
+            text-align: center;
+            /*rgb(242, 242, 242);*/
+            cursor: default;
+        }
+
+        #grptxt {
+            font-size: 14px;
+            display: none;
+        }
+        #exptxt {
+            font-size: 14px;
+        }
+
+        #messageBox {
+            font-size: 12px;
+        }
+
+        #dynForm {
+            padding: 10px 0;
+            cursor: default;
+        }
+
+        #singleUrlInput {
+            width: 50%;
+            height: 20px;
+            padding: 10px;
+            border: 1px solid;
+            border-radius: 4px;
+            margin: 0 20%;
+        }
+
+        #fileUrlInput {
+            width: 50%;
+            height: 20px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            margin: 0 20%;
+        }
+
+        #shButton,
+        #back,
+        #next {
+            background-color: #4285f4;
+            font-size: 16px;
+            width: 100px;
+            padding: 10px 0;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            /*margin: 0 33%;*/
+        }
+
+        #shButton:hover,
+        #back:hover,
+        #next:hover {
+            background-color: #b4c7e5;
+        }
+
+        .custom-dialog {
+            /*justify-content: center;
+            align-items: center;*/
+            display: none;
+            border: 2px solid;
+            border-color: #104496;
+            padding: 10px;
+            /*transform: translate(-50%, -50%);*/
+            /*background-color: #f2f2f2;*/
+            /*box-shadow: 0 50px 50px rgba(0, 0, 0, 0.1);*/
+        }
+
+        .progress-container {
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .progress-bar {
+            width: 0;
+            text-align: center;
+            color: rgb(14, 10, 10);
+            font-weight: bold;
+            transition: margin-left 0.2s ease-in-out;
+            white-space: nowrap;
+            padding: 5px;
+        }
+
+        /* Styling for the disabled state */
+        .disabled {
+            opacity: 0.1;
+            /* Customize the styling for the disabled state */
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body class="body">
+    <div id="img-div">
+        <img src="icon.png" id="logo" alt="PhishSN Logo">
+    </div>
+    <div id="inputDiv" contenteditable="true" class="input-div">
+        <form id="inputForm">
+            <input type="radio" name="inputOption" id="single" value="singleOption" checked> Enter a URL
+
+            <input type="radio" name="inputOption" id="group" value="groupOption"> Upload a TXT file <br>
+            <label for="groupInfo" id="grptxt" contenteditable="true">*Note: Each line in the file should represent a
+                URL.</label>
+
+        </form>
+        <div id="dynForm"></div>
+        <button type="submit" id="shButton">Check</button>
+    </div>
+    <!-- Custom Dialog with Colored Progress Bar -->
+    <div id="customDialog" class="custom-dialog" contenteditable="true">
+        <div class="progress-container">
+            <div class="ttp-box" id="ttpBox"></div>
+            <div class="progress-bar" id="severityProgressBar">Expecting Phishing </div>
+            <div class="message-box" id="messageBox"></div>
+            <div class="goto" id="gotoNext">
+                <button id="back">Go Back</button>
+                <button id="next">Continue</button>
+            </div>
+        </div>
+    </div>
+    <script src="popupJS.js"></script>
+    <script src="opt.js"></script>
+
+</body>
+
+</html>

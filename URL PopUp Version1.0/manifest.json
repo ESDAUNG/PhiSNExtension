@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "PhishSN URL Checker PopUp Version.",
+  "version": "1.0",
+  "description": "A Chrome extension: A PopUp dialog box accepting URL(s) to predict (in percentage) whether the URL(s) is(are) potentially phishing or not.",
+  "permissions": [
+    "activeTab"
+  ],
+  "action": {
+    "default_popup": "home.html",
+    "default_icon": {
+      "16": "logo.png",
+      "48": "logo.png",
+      "128": "logo.png"
+    }
+  }
+}
